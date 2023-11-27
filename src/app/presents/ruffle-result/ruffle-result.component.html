@@ -1,0 +1,36 @@
+<div *ngIf="raffle==false && csrv.ifManager==false">
+    <div class="alert alert-success col-3 row" style="margin: 10px;" role="alert">
+        <h4 class="alert-heading"> הודעה!</h4>
+        <p>
+            ההגרלה עדיין לא בוצעה, תוצאות ההגרלה יפורסמו מייד לאחר ביצוע ההגרלה
+        </p>
+        <hr>
+
+        <p class="mb-0">ההגרלה תערך ב12.01.2023 
+        </p>
+    </div>
+</div>
+
+<div *ngIf="csrv.ifManager==true && raffle==false">
+    <button class="btn btn-outline-dark col-2" (click)="doRuffle()"> להגרלה</button>
+</div>
+
+<div *ngIf="raffle==true">
+    <h2 class="alert alert-warning col-2" style="margin: 10px;"> תוצאות הגרלה: </h2>
+    <div class="card-columns">
+        <div *ngFor="let c of winners; let i = index" id="p1" class="card badge-primary col-2">
+            <div class="card-body text-center" *ngIf="i!=0">
+                <div class="card-text">
+                    <h4>🎁 {{presents[i-1].name}}:</h4>
+                    <h5>{{c?c.name:''}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="alert alert-warning col-2" style="margin: 10px;">תודה על השתתפותכם בהגרלה!!!!!!
+        <hr>
+        <h5>הזוכים בהגרלה קיבלו הודעה על זכייתם...</h5>
+    </h2>
+
+</div>

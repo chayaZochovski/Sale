@@ -1,0 +1,62 @@
+<div *ngIf="raffle==false">
+    <div class="container col-8">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                *ngFor="let present of presents">
+                <div class="col-6">
+                    <h3> {{present.name}}</h3>
+                    <p>נתרם ע"י: {{present.donater}}</p>
+                </div>
+                <div>
+                    <div class="badge badge-primary badge-pill"
+                        style="background-color: rgb(236, 233, 233); color: black">מחיר:
+                        {{present.price}}</div>
+                </div>
+                <div>
+                    <input #amount type="number" min="1" max="5" value="1" />
+                </div>
+                <div>
+                    <button (click)="select(present,amount.value)" class="btn btn-outline-dark">🛒</button>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <div id="submit" class="col-2" *ngIf="flagSubmit==false">
+        <h3>נבחרה מתנה:</h3>
+        <h6>{{present.name}}</h6>
+        <button (click)="flagSubmit=true" class="btn btn-outline-dark col-12">לשליחת ההזמנה</button>
+
+    </div>
+
+    <div id="submit" class="col-2" *ngIf="flagSubmit==true">
+
+        <div *ngIf="flagSubmit==true">
+            <h3>your presents:</h3>
+            <ul>
+                <div id="p" *ngFor="let p of csrv.thisCustomer.presents">{{p.name}}</div>
+            </ul>
+            <button (click)="pay()" class="btn btn-outline-dark col-12">💰</button>
+            <div *ngIf="flag==true">
+                <h3>sum: {{cost}}</h3>
+                <button (click)="payOk()" class="btn btn-outline-dark  col-12">✔</button>
+            </div>
+        </div>
+    </div>
+    <h5 *ngIf="flagSuccess==true" id="alert" class="alert col-2">התשלום בוצע בהצלחה</h5>
+
+</div>
+
+<div *ngIf="raffle==true">
+    <div class="alert alert-success col-3 row" style="margin: 10px;" role="alert">
+        <h4 class="alert-heading"> הודעה!</h4>
+        <p>
+            מכירת הכרטיסים נסגרה, ההגרלה התבצעה.  </p>
+        <hr>
+
+        <p class="mb-0">לצפייה בתוצאות יש להיכנס בתפריט הראשי לתוצאות ההגרלה
+        </p>
+    </div>
+</div>

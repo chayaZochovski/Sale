@@ -1,0 +1,26 @@
+
+<div class="container" style="margin: 20px;">
+<form [formGroup]="frmGroup" (ngSubmit)="onSubmitAdd()" class="form-inline col-4" action="/action_page.php">
+   
+    <h2>בבקשה תוסיף את המתנה שלך</h2>
+    
+    <label class="mr-sm-2">שם:</label>
+    <input type="text" class="form-control" formControlName="name" class="form-control mb-2 mr-sm-2">
+    
+    <label class="mr-sm-2">תורם:</label>
+    <select formControlName="donater"  class="form-control">
+        <option *ngFor="let i of donators">{{i.name}}</option>
+    </select>
+    
+    <label class="mr-sm-2">מחיר:</label>
+    <input type="number" class="form-control" formControlName="price" class="form-control mb-2 mr-sm-2">
+    
+    <input type="submit" value="submit" [disabled]="frmGroup.invalid" class="btn btn-primary mb-2">
+    
+    <h3 *ngIf="frmGroup.invalid" class="alert alert-warning">אזהרה! יש צורך למלא את כל השדות</h3>
+    <h3 *ngIf="frmGroup.controls['name'].errors && frmGroup.controls['name'].errors['uniqueName']" class="alert alert-danger">
+        סכנה! שם המתנה כבר קיים, בבקשה תשנה את השם.</h3>
+
+</form>
+</div>
+

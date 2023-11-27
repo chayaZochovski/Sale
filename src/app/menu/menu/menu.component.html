@@ -1,0 +1,20 @@
+
+<nav class="navbar navbar-expand-sm bg-light" *ngIf="csrv.ifManager!=undefined">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a routerLink="presents" class="nav-link" >מתנות</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="donators" class="nav-link">תורמים</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="customers" class="nav-link">לקנייה</a>
+        </li>
+
+        <li class="nav-item">
+            <a routerLink="ruffleResult/ruffleResult" class="nav-link">תוצאות הגרלה</a>
+        </li>
+    </ul>
+<button style="position: absolute; right: 0px; margin: 10px;" class="btn btn-primary" routerLink="" (click)="csrv.ifManager=undefined">👨‍💼 שינוי חשבון</button>
+</nav>
+

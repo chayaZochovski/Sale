@@ -1,0 +1,30 @@
+
+<div class="container">
+
+    <div class="container col-8">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                *ngFor="let present of presents">
+                <div class="col-6">
+                    <h3> {{present.name}}</h3>
+                    <p>נתרם ע"י: {{present.donater}}</p>
+                </div>
+                <div>
+                    <div class="badge badge-primary badge-pill" style="background-color: rgb(31, 117, 187);">price:
+                        {{present.price}}</div>
+
+                    <button *ngIf="csrv.ifManager==true" routerLink="editPresent/{{present.number}}"
+                        (click)="edit(present)" class="btn btn-outline-dark" style="margin: 10px">🖊</button>
+                    <button *ngIf="csrv.ifManager==true" (click)="delete(present)" style="margin: 10px"
+                        class="btn btn-outline-dark">✖</button>
+                </div>
+            </li>
+        </ul>
+        <button *ngIf="csrv.ifManager==true" routerLink="addPresent" (click)="add()"
+            class="btn btn-outline-dark col-12 align-items-center" style="margin-top: 20px;" id="add">הוסף מתנה
+            </button>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

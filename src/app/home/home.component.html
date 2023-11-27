@@ -1,0 +1,15 @@
+<div class="container" style="margin: 50px; " *ngIf="csrv.ifManager==undefined">
+<div class="col-3" id="enter">
+    <h1 *ngIf="enterWithManager==undefined">ברוכים הבאים!!!</h1>
+    <div style="margin-bottom: 10px;">
+        <button class="btn col-12 btn-secondary btn-lg" (click)="manager=true">היכנס כמנהל</button>
+    </div>
+    <input type="password" class="form-control col-12" *ngIf="manager==true" [formControl]="inputPassword" placeholder="הקש סיסמא">
+    <button class="btn btn-lg btn-primary btn-block col-12" style="margin-top: 10px;" (click)="enterManager()" *ngIf="manager==true">להתחבר</button>
+
+    <button class="btn col-12 btn-secondary btn-lg" (click)="enterCustomer()" *ngIf="manager!=true">היכנס כלקוח</button>
+    <h3 *ngIf="enterWithManager==true" style="margin-top: 10px;">ברוכים הבאים מנהל</h3>
+    
+    <h3 *ngIf="enterWithManager==false">ברוכים הבאים למכירה הסינית הגדולה בעולם!!</h3>
+</div>
+</div>
